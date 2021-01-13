@@ -2,7 +2,12 @@ from PyQt5.QtWidgets import (
     QGridLayout,
     QLabel,
     QWidget,
-    QStackedLayout
+    QStackedLayout,
+)
+
+from PyQt5.QtCore import (
+    QRect,
+    Qt
 )
 
 
@@ -16,11 +21,18 @@ class LoginScreen(QWidget):
         )
         backgroundLayout.addWidget(background)
 
-        boxLayout = QGridLayout()
+        boxLayout = QStackedLayout()
         box = QWidget()
         box.setStyleSheet(
-            'background-image: none;'
             'background-color: #2C2F33;'
         )
         boxLayout.addWidget(box)
         backgroundLayout.addChildLayout(boxLayout)
+
+        innerBoxLayout = QStackedLayout()
+        welcome = QLabel('HIIIIIIIIIIIIIIIII')
+        welcome.setStyleSheet(
+            'color: #FFFFFF;'
+        )
+        innerBoxLayout.addWidget(welcome)
+        boxLayout.addChildLayout(innerBoxLayout)
